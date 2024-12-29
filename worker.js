@@ -515,23 +515,24 @@ function getHtmlContent() {
       }
 
       .cron-item {
+        padding: 0.75rem 1rem;
+        background: transparent;
         position: relative;
-        padding: 0.75rem;
-        background: var(--light-bg);
-        border-radius: 8px;
-        border: 1px solid var(--light-border);
+        border-bottom: 1px solid var(--light-border);
       }
 
-      .cron-item.dark {
-        background: var(--dark-bg);
-        border-color: var(--dark-border);
+      .cron-item:last-child {
+        border-bottom: none;
+      }
+
+      .dark .cron-item {
+        border-bottom-color: var(--dark-border);
       }
 
       .cron-status {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        margin-bottom: 0.5rem;
       }
 
       .cron-status i {
@@ -560,15 +561,14 @@ function getHtmlContent() {
       }
 
       .last-run {
+        font-size: 0.75rem;
+        color: var(--light-text-secondary);
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.75rem;
-        color: var(--light-text-secondary);
-        margin-top: 0.5rem;
       }
 
-      .last-run.dark {
+      .dark .last-run {
         color: var(--dark-text-secondary);
       }
 
@@ -849,138 +849,131 @@ function getHtmlContent() {
       }
 
       .cron-results-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+        background: var(--light-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--light-border);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .dark .cron-results-container {
+        background: var(--dark-surface);
+        border-color: var(--dark-border);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .cron-item {
+        padding: 0.75rem 1rem;
+        background: transparent;
         position: relative;
-        padding: 0.75rem;
-        background: var(--light-bg);
-        border-radius: 8px;
-        border: 1px solid var(--light-border);
+        border-bottom: 1px solid var(--light-border);
       }
 
-      .cron-item.dark {
-        background: var(--dark-bg);
-        border-color: var(--dark-border);
+      .cron-item:last-child {
+        border-bottom: none;
       }
 
-      .cron-status {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
+      .dark .cron-item {
+        border-bottom-color: var(--dark-border);
       }
 
-      .message-toggle {
-        text-align: center;
-        font-size: 0.875rem;
-        color: var(--light-text-secondary);
-        cursor: pointer;
-        padding: 0.5rem 0;
-        user-select: none;
-        margin: 0.5rem 0;
-      }
-
-      .message-toggle:hover {
-        opacity: 0.8;
-      }
-
-      .cron-message {
-        display: none;
-        margin: 0.5rem 0;
-        padding: 0.75rem;
-        background: var(--light-bg);
-        border-radius: 6px;
-        font-family: monospace;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        color: var(--light-text);
-        word-break: break-word;
-        overflow-wrap: break-word;
-        max-height: 150px;
-        overflow-y: auto;
-        border: 1px solid var(--light-border);
-      }
-
-      .cron-message.dark {
-        background: var(--dark-bg);
-        border-color: var(--dark-border);
-        color: var(--dark-text);
-      }
-
-      .cron-message.show {
-        display: block;
-      }
-
-      /* 修改 cron-header 相关样式 */
       .cron-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
-        margin-bottom: 0.5rem;
-        padding: 0;
+        gap: 1rem;
       }
 
-      .cron-status {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 0;
-        padding: 0;
-        flex-shrink: 0;
+      .script-name {
+        font-size: 0.9rem;
+        color: var(--light-text);
+        font-weight: 500;
+        margin-right: 0.5rem;
+      }
+
+      .dark .script-name {
+        color: var(--dark-text);
+      }
+
+      .status-text {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .status-text.success {
+        color: var(--success-color);
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .status-text.failed {
+        color: var(--failed-color);
+        background: rgba(239, 68, 68, 0.1);
+      }
+
+      .dark .status-text.success {
+        background: rgba(74, 222, 128, 0.1);
+      }
+
+      .dark .status-text.failed {
+        background: rgba(248, 113, 113, 0.1);
       }
 
       .last-run {
+        font-size: 0.75rem;
+        color: var(--light-text-secondary);
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.75rem;
-        color: var(--light-text-secondary);
-        margin: 0;
-        padding: 0;
-        flex-shrink: 0;
-        margin-left: auto;
       }
 
-      /* 修改登录按钮样式 */
-      #loginForm button {
-        background: linear-gradient(to right, rgb(0, 176, 155), rgb(150, 201, 61)) !important;
-        color: white;
-        width: 100%;
-        padding: 1rem;
-        border-radius: 12px;
-        border: none;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      .dark .last-run {
+        color: var(--dark-text-secondary);
       }
 
-      #loginForm button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      .cron-status i.success {
+        color: var(--success-color);
       }
 
-      #loginForm button:active {
-        transform: translateY(0);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      .cron-status i.failed {
+        color: var(--failed-color);
       }
 
-      #loginForm button.dark {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      .dark .cron-status i.success {
+        color: #4ade80;
       }
 
-      /* 确保渐变色不会被其他样式覆盖 */
-      #loginForm button,
-      #loginForm button.light,
-      #loginForm button.dark {
-        background: linear-gradient(to right, rgb(0, 176, 155), rgb(150, 201, 61)) !important;
-        color: white;
+      .dark .cron-status i.failed {
+        color: #f87171;
+      }
+
+      /* 成功状态图标样式 */
+      .cron-status i.success {
+        color: var(--success-color);
+        font-size: 20px;
+      }
+
+      /* 失败状态图标样式 */
+      .cron-status i.failed {
+        color: var(--failed-color);
+        font-size: 20px;
+      }
+
+      /* 深色模式下的图标颜色 */
+      .dark .cron-status i.success {
+        color: #4ade80;  /* 深色模式下的成功颜色 */
+      }
+
+      .dark .cron-status i.failed {
+        color: #f87171;  /* 深色模式下的失败颜色 */
+      }
+
+      /* 调整图标与文字的对齐 */
+      .cron-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;  /* 增加图标和文字之间的间距 */
       }
     </style>
   </head>
@@ -1195,33 +1188,29 @@ function getHtmlContent() {
                 '运 行' +
               '</button>' +
             '</div>' +
-            '<div class="cron-results-container">' +
+            '<div class="cron-results-container ' + theme + '">' +
               result.cronResults.map(cronResult => {
                 const statusIcon = cronResult.success ? 'check_circle' : 'error';
+                const statusText = cronResult.success ? 'success' : 'failed';
+                const fileName = cronResult.message.split('/').pop();
+                
                 return '<div class="cron-item ' + theme + '">' +
                   '<div class="cron-header">' +
                     '<div class="cron-status">' +
-                      '<i class="material-icons-round ' + (cronResult.success ? 'success' : 'failed') + '">' +
-                        statusIcon +
+                      '<i class="material-icons-round ' + statusText + '">' +
+                        (cronResult.success ? 'check_circle' : 'error') +
                       '</i>' +
-                      '<span class="' + (cronResult.success ? 'success' : 'failed') + '">' +
-                        (cronResult.success ? 'success' : 'failed') +
-                      '</span>' +
+                      '<span class="script-name">' + fileName + '</span>' +
+                      '<span class="status-text ' + statusText + '">' + statusText + '</span>' +
                     '</div>' +
                     '<div class="last-run ' + theme + '">' +
-                      '<i class="material-icons-round">schedule</i>' +
-                      '<span>' + new Date(result.lastRun).toLocaleString(undefined, {
-                        year: 'numeric',
+                      new Date(result.lastRun).toLocaleString(undefined, {
                         month: '2-digit',
                         day: '2-digit',
                         hour: '2-digit',
                         minute: '2-digit',
-                      }) + '</span>' +
+                      }) +
                     '</div>' +
-                  '</div>' +
-                  '<div class="message-toggle ' + theme + '" onclick="toggleMessage(this)">查看脚本 ▼</div>' +
-                  '<div class="cron-message ' + theme + ' ' + (cronResult.success ? 'success' : 'failed') + '">' + 
-                    cronResult.message + 
                   '</div>' +
                 '</div>';
               }).join('') +
