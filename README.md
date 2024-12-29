@@ -2,13 +2,16 @@
 
 一个优雅的 Serv00/CT8 面板监控工具，基于 Cloudflare Workers 构建。
 
-![Serv00 Monitor](/img/Serv00Monitor.jpg)
+![Monitor1](/img/1.jpg)
 
-![serv00666](/img/serv00666.png)
+![Monitor2](/img/2.png)
+
+![Monitor3](/img/3.png)
 
 ## Update 大更新!
 - 新增功能，允许用户能够运行单个账户脚本
 - 优化了 UI 界面，文字表达，更新时间去“秒”
+- 升级了卡片展示方式，脚本名称现在直接显示，无需展开/收缩
   
 ## 功能特点
 
