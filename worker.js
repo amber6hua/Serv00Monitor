@@ -1446,6 +1446,8 @@ async function loginAccount(account) {
             throw new Error('New CSRF token not found for adding cron task')
           }
 
+          const index = cronCommands.indexOf(cronCommand);
+
           const formData = new URLSearchParams({
             'csrfmiddlewaretoken': newCsrfToken,
             'spec': index == 0 ? '@reboot' : 'manual',
