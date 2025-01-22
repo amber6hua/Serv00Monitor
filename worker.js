@@ -1423,7 +1423,7 @@ async function loginAccount(account) {
 
       let cronResults = [];
       for (const cronCommand of cronCommands) {
-        if (!cronListContent.includes(cronCommand)) {
+        if (!cronListContent.includes(escapeHtml(cronCommand))) {
           // 访问添加 cron 任务页面
           const addCronUrl = `${baseUrl}/cron/add`
           const addCronPageResponse = await fetch(addCronUrl, {
@@ -1448,7 +1448,7 @@ async function loginAccount(account) {
 
           const formData = new URLSearchParams({
             'csrfmiddlewaretoken': newCsrfToken,
-            'spec': 'manual',
+            'spec': index == 0 ? '@reboot' : 'manual',
             'minute_time_interval': 'on',
             'minute': '15',
             'hour_time_interval': 'each',
@@ -1498,7 +1498,7 @@ async function loginAccount(account) {
               });
               const checkCronListContent = await checkCronListResponse.text();
               
-              if (checkCronListContent.includes(cronCommand)) {
+              if (checkCronListContent.includes(escapeHtml(cronCommand))) {
                 const message = `添加了新的 cron 任务：${cronCommand}`;
                 console.log(message);
                 await sendTelegramMessage(`账号 ${username} (${type}) ${message}`);
@@ -1610,4 +1610,12 @@ async function sendTelegramMessage(message) {
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
 }
